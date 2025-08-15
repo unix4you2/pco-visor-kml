@@ -1,6 +1,9 @@
-# Visualizador KML Ultra
+# Visualizador KML
+
+Proyecto derivado de [Práctico Framework](https://www.practico.org//)
 
 Visualizador web ultraligero y optimizado para archivos KML con miles de puntos geográficos, usando tecnologías libres y modernas.
+
 
 ## Características
 
