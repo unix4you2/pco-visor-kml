@@ -2,6 +2,8 @@
 
 Proyecto derivado de [Práctico Framework](https://www.practico.org//)
 
+Pruébalo en línea directamente en [Este enlace](https://unix4you2.github.io/app-kml-viewer/)
+
 Visualizador web ultraligero y optimizado para archivos KML con miles de puntos geográficos, usando tecnologías libres y modernas.
 
 
