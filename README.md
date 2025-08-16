@@ -1,6 +1,6 @@
-# Visualizador KML
+# ![](https://github.com/unix4you2/practico/raw/master/img/logo.png) Visualizador KML
 
-Proyecto derivado de [Práctico Framework](https://www.practico.org//)
+Este es un proyecto derivado de [Práctico Framework](https://www.practico.org//) articulable como plugin o complemento
 
 Pruébalo en línea directamente en [Este enlace](https://visor-kml.practico.run) usando el **archivo_demo.kml** disponible en este repo o con cualquier otro archivo en formato KML 2.0
 
