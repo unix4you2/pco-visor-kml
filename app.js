@@ -528,3 +528,63 @@ document.addEventListener('visibilitychange', () => {
         }, 100);
     }
 });
+
+function loadKMLFromURL(kmlUrl) {
+    showLoading('Cargando archivo KML desde URL...');
+
+    fetch(kmlUrl)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('No se pudo cargar el archivo KML');
+        }
+        return response.text();
+    })
+    .then(kmlText => {
+        console.log('Archivo KML cargado, iniciando parsing...');
+        parseKMLFile(kmlText);
+    })
+    .catch(error => {
+        console.error('Error cargando archivo KML:', error);
+        hideLoading();
+        showError('Error cargando el archivo KML desde URL');
+    });
+}
+
+
+/*
+IMPORTANTE:  Si requiere usar el parametro ?kml=https://tudominio.com
+Es probable que requieras agregar autorización a los dominios remotos
+para que puedan cargar el KML remoto.
+
+<Directory "/ruta/a/tu/folder">
+    <IfModule mod_headers.c>
+        <FilesMatch "\.(kml)$">
+            Header set Access-Control-Allow-Origin "*"
+        </FilesMatch>
+    </IfModule>
+</Directory>
+
+MODO DE USO:
+Llame el visor 
+https://unix4you2.github.io/pco-visor-kml/index.html?kml=https://tudominio.com/archivo.kml
+*/
+
+// Revisa si tiene parametro con el archivo KML
+(function() {
+    // Verificar parámetros URL al cargar
+    const urlParams = new URLSearchParams(window.location.search);
+    const kmlParam = urlParams.get('kml');
+    if (kmlParam) {
+        // Esperar a que el mapa esté inicializado
+        setTimeout(() => {
+            const decodedUrl = decodeURIComponent(kmlParam);
+            // Usar tu función existente para cargar el archivo KML
+            if (typeof window.loadKMLFromURL === 'function') {
+                window.loadKMLFromURL(decodedUrl);
+            } else {
+                // Simular carga de archivo si no existe la función
+                console.log('Cargando KML desde:', decodedUrl);
+            }
+        }, 1000);
+    }
+})();
